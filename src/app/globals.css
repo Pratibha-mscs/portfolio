@@ -1,26 +1,335 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/*
+  ---------------------------------------------------------------------------
+  "Soft AI" design tokens
+  These map directly to the palette in the project brief. Defining them here
+  (Tailwind v4's CSS-first theme) automatically generates utility classes
+  such as bg-canvas, text-ink, border-line, from-accent-blue, font-heading…
+  ---------------------------------------------------------------------------
+*/
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Warm cream base — coordinated with graduation photo warm tones */
+  --color-canvas: #f7f0e3;
+  --color-surface: #fbf5e8;
+  --color-ink: #1e1a14;
+  --color-muted: #6b5a43;
+  --color-line: #dfd0b5;
+
+  /* Graduation gold (primary interactive — pulled from hood/stole in photo),
+     deep forest green (secondary depth),
+     soft terracotta (warmth accent, used lightly) */
+  --color-accent-blue: #d9a441;
+  --color-accent-lavender: #31583d;
+  --color-accent-mint: #c86b45;
+
+  /* Darker text siblings for small copy on tinted backgrounds */
+  --color-accent-lavender-deep: #1e3a28;
+  --color-accent-mint-deep: #8a3a20;
+
+  /* Named tokens used directly in dark-section overrides */
+  --color-forest: #2f5137;
+  --color-cream: #f7f0e3;
+
+  /* Supplemental palette — used sparingly for panel tinting and highlights */
+  --color-sage: #dde7d6;       /* soft sage — light panel backgrounds, subtle borders */
+  --color-gold-light: #f4d27a; /* bright soft gold — highlight chips, small sparkle details */
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
+
+  --shadow-soft: 0 30px 60px -25px rgb(30 26 20 / 0.13);
+  --shadow-glow: 0 25px 70px -20px rgb(217 164 65 / 0.30);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    /* Subtle crosshatch grid — warm paper/notebook texture at near-invisible opacity */
+    background-image:
+      linear-gradient(rgb(107 90 69 / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(107 90 69 / 0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  ::selection {
+    background-color: var(--color-accent-blue);
+    color: var(--color-surface);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-canvas);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-line);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-muted);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Gradient headline text — graduation gold into deep forest green */
+  .text-gradient {
+    background-image: linear-gradient(
+      120deg,
+      var(--color-accent-blue) 0%,
+      var(--color-accent-lavender) 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  /* Frosted glass for the sticky navbar — warm cream tint */
+  .glass-nav {
+    background-color: rgb(247 240 227 / 0.82);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+  }
+
+  /* Faint dot grid — warm parchment tone instead of cold blue-grey */
+  .bg-dot-grid {
+    background-image: radial-gradient(circle, rgb(107 90 69 / 0.12) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+
+  /*
+    Dark forest section — applied by adding class="section-forest" to any <section>.
+    Background and CSS custom-property overrides are set here. However, because
+    this project uses @theme inline, Tailwind utility classes contain hardcoded
+    values rather than var() references — so the custom-property overrides do NOT
+    cascade into utilities like .text-ink or .text-muted automatically.
+    The explicit descendant selectors below restore correct contrast.
+  */
+  .section-forest {
+    background-color: var(--color-forest);
+    --color-ink: var(--color-cream);
+    --color-muted: rgba(247, 240, 227, 0.72);
+    --color-surface: rgba(255, 255, 255, 0.055);
+    --color-canvas: var(--color-forest);
+    --color-line: rgba(247, 240, 227, 0.10);
+    --color-accent-lavender-deep: var(--color-cream);
+    --color-accent-mint-deep: var(--color-cream);
+  }
+
+  /*
+    Dark-section text contrast overrides.
+    These are required because @theme inline compiles Tailwind utility values as
+    hardcoded literals, bypassing the custom-property cascade above.
+    Target: all three dark sections — ProjectPhilosophy, CurrentlyBuilding, Contact.
+  */
+
+  /*
+    .text-gradient on dark backgrounds: the default gradient ends in forest green
+    (#31583d) which blends into the dark section background. Override to
+    graduation-gold → warm cream so the gradient text stays fully readable.
+  */
+  .section-forest .text-gradient {
+    background-image: linear-gradient(120deg, var(--color-accent-blue) 0%, var(--color-cream) 100%);
+  }
+
+  /* Headings → warm cream, high contrast */
+  .section-forest h1,
+  .section-forest h2,
+  .section-forest h3,
+  .section-forest h4 {
+    color: var(--color-cream);
+  }
+
+  /* .text-ink → overrides hardcoded espresso (#1e1a14) → bright cream */
+  .section-forest .text-ink {
+    color: var(--color-cream);
+  }
+
+  /* .text-muted → overrides hardcoded warm-brown → legible translucent cream */
+  .section-forest .text-muted {
+    color: rgba(247, 240, 227, 0.78);
+  }
+
+  /*
+    Semibold emphasis spans inside paragraphs → warm graduation gold.
+    Higher specificity than .section-forest .text-ink so gold wins for these spans.
+    Targets: "model", "dashboard", "assistant", "pipeline" in ProjectPhilosophy.
+  */
+  .section-forest p > span.font-semibold {
+    color: var(--color-gold-light);
+  }
+
+  /*
+    Deep accent colours that become near-invisible on forest green.
+    Only fires for content NOT inside a cream card (i.e., icons/labels placed
+    directly on the dark section background).
+  */
+  .section-forest .text-accent-lavender-deep {
+    color: rgba(247, 240, 227, 0.88);
+  }
+
+  .section-forest .text-accent-mint-deep {
+    color: rgba(247, 240, 227, 0.80);
+  }
+
+  /*
+    ── Cream card reset ─────────────────────────────────────────────────────────
+    Cards inside dark sections carry bg-surface (compiled to the literal cream
+    value #fbf5e8 by @theme inline, so they ARE visually cream).  The section-
+    level light-text overrides above cascade into these cards and make the card
+    content near-invisible (cream text on cream card).
+
+    The selectors below have specificity 0-3-0 (three class selectors) — one
+    class higher than the section-level 0-2-0 rules — so they win and restore
+    dark readable text inside every cream card in a dark section.
+
+    Affected sections: CurrentlyBuilding, Contact.
+    Not affected: ProjectPhilosophy (no .bg-surface cards — text sits directly
+    on the dark background and correctly stays cream).
+    ─────────────────────────────────────────────────────────────────────────── */
+
+  /* Base: set dark text as the starting inherited colour for the whole card */
+  .section-forest .bg-surface {
+    color: #1e1a14;
+  }
+
+  /* Headings inside cream cards → deep espresso */
+  .section-forest .bg-surface h1,
+  .section-forest .bg-surface h2,
+  .section-forest .bg-surface h3,
+  .section-forest .bg-surface h4 {
+    color: #1e1a14;
+  }
+
+  /* .text-ink inside cream cards → deep espresso */
+  .section-forest .bg-surface .text-ink {
+    color: #1e1a14;
+  }
+
+  /* .text-muted inside cream cards → readable warm muted brown */
+  .section-forest .bg-surface .text-muted {
+    color: #6b5a43;
+  }
+
+  /*
+    Status badge colours inside cream cards.
+    Restore the original on-palette deep tones — they read well on cream.
+    Without this, the section-level cream overrides make these near-invisible.
+  */
+  .section-forest .bg-surface .text-accent-lavender-deep {
+    color: #1e3a28;   /* deep forest green — readable on cream */
+  }
+
+  .section-forest .bg-surface .text-accent-mint-deep {
+    color: #8a3a20;   /* dark terracotta — readable on cream */
+  }
+
+  .mask-fade-edges {
+    mask-image: radial-gradient(ellipse at center, black 55%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 100%);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Ambient motion — gentle, looping, CSS-driven so the page feels alive
+   without leaning on heavier JS animation for purely decorative elements.
+   --------------------------------------------------------------------------- */
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(var(--tilt, 0deg));
+  }
+  50% {
+    transform: translateY(-16px) rotate(var(--tilt, 0deg));
+  }
+}
+
+@keyframes drift-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(4%, -6%) scale(1.08);
+  }
+  66% {
+    transform: translate(-3%, 4%) scale(0.96);
+  }
+}
+
+@keyframes drift-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-5%, 5%) scale(1.05);
+  }
+  66% {
+    transform: translate(4%, -3%) scale(0.97);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-float {
+  animation: float-y 7s var(--ease-soft, ease-in-out) infinite;
+}
+
+.animate-drift-a {
+  animation: drift-a 26s ease-in-out infinite;
+}
+
+.animate-drift-b {
+  animation: drift-b 30s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 4.5s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-drift-a,
+  .animate-drift-b,
+  .animate-pulse-soft,
+  .animate-spin-slow {
+    animation: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
 }
