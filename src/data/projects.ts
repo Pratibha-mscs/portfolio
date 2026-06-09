@@ -90,7 +90,7 @@ export const projects: Project[] = [
     stack: ["Python", "RAG", "Web Scraping", "OpenAI API", "Vector Search", "NLP"],
     icon: FileSearch,
     accent: "mint",
-    links: { githubComingSoon: true },
+    links: { github: "https://github.com/Pratibha-mscs/fin-rag-assistant" },
   },
   {
     slug: "scare-o-meter",
@@ -106,7 +106,7 @@ export const projects: Project[] = [
     stack: ["Python", "LSL", "Random Forest", "Signal Processing", "BioRadio"],
     icon: Activity,
     accent: "blue",
-    links: { githubComingSoon: true },
+    links: { github: "https://github.com/Pratibha-mscs/scare-o-meter" },
   },
   {
     slug: "supportops-ticket-intelligence",
@@ -122,6 +122,6 @@ export const projects: Project[] = [
     stack: ["SQL", "Python", "Scikit-learn", "Streamlit", "Pandas"],
     icon: Headset,
     accent: "lavender",
-    links: { githubComingSoon: true },
+    links: { github: "https://github.com/Pratibha-mscs/FinOps-Pulse" },
   },
 ];

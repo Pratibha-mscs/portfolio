@@ -21,9 +21,7 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-// TODO: once you deploy, replace this with your real Vercel URL
-// (e.g. https://pratibha-giri.vercel.app) so social-share previews resolve correctly.
-const siteUrl = "https://pratibha-giri-portfolio.vercel.app";
+const siteUrl = "https://portfolio-5cee.vercel.app";
 
 const title = `${siteConfig.name} — Data Scientist & Data Engineer`;
 

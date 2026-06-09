@@ -16,10 +16,9 @@ export const siteConfig = {
   bio: "I work across the full data lifecycle — cleaning messy datasets, building pipelines, analyzing patterns, training models, and creating dashboards that help teams make better decisions.",
   personalityLine: "Currently exploring fraud analytics, Graph RAG, LLMs, and probably the next best ice cream spot.",
 
-  // TODO: swap GitHub and LinkedIn for your real profile URLs before going live.
   email: "pratibha.g1702@gmail.com",
-  github: "https://github.com/your-github-username",
-  linkedin: "https://www.linkedin.com/in/your-linkedin-username",
+  github: "https://github.com/Pratibha-mscs",
+  linkedin: "https://www.linkedin.com/in/pratibhagirids/",
 
   resumeUrl: "/resume.pdf",
   profileImage: "/profile.jpeg",
