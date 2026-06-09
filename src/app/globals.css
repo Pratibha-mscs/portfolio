@@ -59,9 +59,12 @@
     background-size: 32px 32px;
   }
 
+  /* Text selection — forest green bg + cream text on light sections (high contrast).
+     Dark sections override below in @layer utilities. Using literal values to
+     avoid @theme inline cascade issues. */
   ::selection {
-    background-color: var(--color-accent-blue);
-    color: var(--color-surface);
+    background-color: #2f5137;
+    color: #f7f0e3;
   }
 
   ::-webkit-scrollbar {
@@ -234,6 +237,12 @@
 
   .section-forest .bg-surface .text-accent-mint-deep {
     color: #8a3a20;   /* dark terracotta — readable on cream */
+  }
+
+  /* Selection inside dark sections — gold bg + dark ink text. */
+  .section-forest ::selection {
+    background-color: #d9a441;
+    color: #1e1a14;
   }
 
   .mask-fade-edges {

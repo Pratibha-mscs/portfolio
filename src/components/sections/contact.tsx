@@ -68,7 +68,7 @@ export function Contact() {
                 rel={link.external ? "noopener noreferrer" : undefined}
                 className="group flex h-full flex-col items-center gap-3 rounded-3xl border border-line bg-surface px-5 py-7 text-center shadow-[var(--shadow-soft)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-accent-blue/30 hover:shadow-[0_30px_70px_-25px_rgba(217,164,65,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue/50 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-accent-blue/15 to-accent-lavender/15 text-accent-blue transition-transform duration-300 ease-out group-hover:scale-110">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent-blue/15 text-accent-blue transition-transform duration-300 ease-out group-hover:scale-110">
                   <Icon className="h-5 w-5" aria-hidden />
                 </span>
                 <span className="font-heading text-base font-semibold text-ink">{link.label}</span>

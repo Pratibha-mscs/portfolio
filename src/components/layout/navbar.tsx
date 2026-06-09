@@ -70,7 +70,7 @@ export function Navbar() {
     >
       <Container className="flex h-[72px] items-center justify-between">
         <a href="#top" className="group flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-accent-blue to-accent-lavender font-heading text-sm font-semibold text-white shadow-[0_10px_24px_-8px_rgba(59,130,246,0.65)] transition-transform duration-300 ease-out group-hover:-rotate-6">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent-lavender font-heading text-sm font-semibold text-white shadow-[0_8px_20px_-6px_rgba(49,88,61,0.55)] transition-transform duration-300 ease-out group-hover:-rotate-6">
             {siteConfig.initials}
           </span>
           <span className="hidden font-heading text-lg font-semibold tracking-tight text-ink sm:inline">

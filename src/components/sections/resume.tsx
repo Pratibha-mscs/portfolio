@@ -11,12 +11,8 @@ export function Resume() {
         <Reveal>
           <div className="relative isolate overflow-hidden rounded-[2rem] border border-line bg-surface px-6 py-12 text-center shadow-[var(--shadow-soft)] sm:px-12 sm:py-16">
             <div aria-hidden className="absolute inset-0 -z-10 bg-dot-grid mask-fade-edges opacity-50" />
-            <div
-              aria-hidden
-              className="absolute -top-28 left-1/2 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-gradient-to-br from-accent-blue/20 via-accent-lavender/20 to-accent-mint/15 blur-3xl"
-            />
 
-            <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-accent-blue/15 to-accent-lavender/15 text-accent-blue">
+            <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-accent-lavender/15 text-accent-lavender-deep">
               <FileText className="h-6 w-6" aria-hidden />
             </span>
 

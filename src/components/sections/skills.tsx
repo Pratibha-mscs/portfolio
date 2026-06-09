@@ -12,7 +12,7 @@ import { cn } from "@/lib/cn";
  * All category icon badges use forest green — consistent visual hierarchy.
  * Colour variety comes from the pill tones, not the icons.
  */
-const ICON_BADGE = "from-accent-lavender/20 to-accent-lavender/5 text-accent-lavender-deep";
+const ICON_BADGE = "bg-accent-lavender/15 text-accent-lavender-deep";
 
 /**
  * Pill tones per group — creates the balanced green + gold data-notebook palette.
@@ -60,17 +60,11 @@ export function Skills() {
                 variants={fadeUp}
                 className="group relative overflow-hidden rounded-3xl border border-line bg-surface p-6 shadow-[var(--shadow-soft)] transition-transform duration-300 ease-out hover:-translate-y-1 sm:p-7"
               >
-                {/* Subtle hover glow — mixes forest green + gold */}
-                <div
-                  aria-hidden
-                  className="absolute -right-10 -top-12 h-40 w-40 rounded-full bg-gradient-to-br from-accent-lavender/10 to-accent-blue/10 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100"
-                />
-
                 {/* Category header — forest green icon badge + title */}
                 <div className="relative flex items-center gap-3.5">
                   <span
                     className={cn(
-                      "flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br",
+                      "flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl",
                       ICON_BADGE
                     )}
                   >

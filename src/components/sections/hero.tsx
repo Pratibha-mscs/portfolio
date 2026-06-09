@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Sparkles } from "lucide-react";
-import { AuroraBackground } from "@/components/ui/aurora-background";
+import { ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/brand-icons";
 import { Container } from "@/components/ui/container";
@@ -26,7 +25,6 @@ export function Hero() {
   return (
     <section id="top" className="relative isolate overflow-hidden pt-32 pb-24 sm:pt-40 sm:pb-28 lg:pt-44 lg:pb-32">
       <div aria-hidden className="absolute inset-0 -z-20 bg-dot-grid mask-fade-edges opacity-60" />
-      <AuroraBackground className="-z-10" />
 
       <Container className="grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12 xl:gap-16">
         {/* Text column */}
@@ -43,15 +41,7 @@ export function Hero() {
 
           <Reveal variants={fadeUp} className="mt-5">
             <h1 className="font-heading text-4xl font-semibold leading-[1.12] tracking-tight text-ink sm:text-5xl lg:text-[3.35rem]">
-              Hi, I&rsquo;m <span className="text-gradient">Pratibha</span>{" "}
-              <motion.span
-                className="inline-block origin-[70%_70%]"
-                animate={{ rotate: [0, 16, -10, 16, -6, 12, 0] }}
-                transition={{ duration: 2.4, repeat: Infinity, repeatDelay: 3.2, ease: "easeInOut" }}
-                aria-hidden
-              >
-                👋
-              </motion.span>
+              Hi, I&rsquo;m <span className="text-accent-blue">Pratibha</span>
             </h1>
           </Reveal>
 
@@ -69,9 +59,8 @@ export function Hero() {
           </Reveal>
 
           <Reveal variants={fadeUp} className="mt-3 max-w-xl">
-            <p className="flex items-start gap-2 font-mono text-[0.8rem] leading-relaxed text-muted sm:items-center">
-              <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent-lavender-deep sm:mt-0" aria-hidden />
-              <span>{siteConfig.personalityLine}</span>
+            <p className="font-mono text-[0.8rem] leading-relaxed text-muted">
+              — {siteConfig.personalityLine}
             </p>
           </Reveal>
 
@@ -103,25 +92,16 @@ export function Hero() {
         {/* Portrait column */}
         <Reveal variants={scaleIn} className="relative mx-auto w-full max-w-[19rem] sm:max-w-sm lg:mx-0 lg:max-w-none">
           <div className="relative mx-auto aspect-[4/5] w-full max-w-sm">
-            {/* soft blue/lavender glow */}
-            <div
-              aria-hidden
-              className="absolute -inset-8 -z-10 rounded-[3rem] bg-gradient-to-br from-accent-blue/35 to-accent-lavender/35 opacity-90 blur-3xl animate-pulse-soft"
-            />
-
-            {/* gradient border ring */}
-            <div className="h-full rounded-[1.85rem] bg-gradient-to-br from-accent-blue/75 to-accent-lavender/70 p-[3px] shadow-[var(--shadow-soft)]">
-              <div className="relative h-full overflow-hidden rounded-[calc(1.85rem-3px)] bg-surface">
-                <Image
-                  src={siteConfig.profileImage}
-                  alt={`Portrait of ${siteConfig.name}, smiling at her graduation`}
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 24rem, (min-width: 640px) 22rem, 78vw"
-                  className="object-cover object-center"
-                />
-                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-ink/20 via-ink/0 to-transparent" />
-              </div>
+            {/* portrait — solid border frame, no gradient */}
+            <div className="relative h-full overflow-hidden rounded-[1.85rem] border border-accent-lavender/35 bg-surface shadow-[var(--shadow-soft)]">
+              <Image
+                src={siteConfig.profileImage}
+                alt={`Portrait of ${siteConfig.name}, smiling at her graduation`}
+                fill
+                priority
+                sizes="(min-width: 1024px) 24rem, (min-width: 640px) 22rem, 78vw"
+                className="object-cover object-center"
+              />
             </div>
 
             {/* A few floating tags — enough to feel alive, not so many the photo disappears */}

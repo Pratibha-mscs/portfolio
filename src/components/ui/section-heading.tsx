@@ -1,4 +1,3 @@
-import { Sparkles } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { cn } from "@/lib/cn";
 
@@ -26,7 +25,7 @@ export function SectionHeading({
             isCenter && "mx-auto"
           )}
         >
-          <Sparkles className="h-3.5 w-3.5" aria-hidden />
+          <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-blue" />
           {eyebrow}
         </span>
       ) : null}

@@ -47,20 +47,15 @@ export function About() {
             </p>
 
             <p className="text-balance pt-1 font-heading text-xl font-medium leading-snug text-ink sm:text-2xl">
-              <span className="text-gradient">Data Scientist</span> by training. Engineer by execution. Curious by
+              <span className="text-accent-blue">Data Scientist</span> by training. Engineer by execution. Curious by
               default.
             </p>
           </Reveal>
 
           <Reveal variants={scaleIn}>
             <div className="relative h-full overflow-hidden rounded-3xl border border-line bg-surface p-7 shadow-[var(--shadow-soft)] sm:p-8">
-              <div
-                aria-hidden
-                className="absolute -right-16 -top-20 h-52 w-52 rounded-full bg-gradient-to-br from-accent-blue/15 via-accent-lavender/15 to-transparent blur-2xl"
-              />
-
               <div className="relative flex items-center gap-3.5">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-accent-blue/15 to-accent-lavender/15 text-accent-blue">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-accent-blue/15 text-accent-blue">
                   <Compass className="h-5 w-5" aria-hidden />
                 </span>
                 <div>

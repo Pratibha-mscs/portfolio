@@ -10,22 +10,19 @@ import type { AccentColor, Project } from "@/data/projects";
 import { fadeUp } from "@/lib/motion";
 import { cn } from "@/lib/cn";
 
-const ACCENT_STYLES: Record<AccentColor, { icon: string; glow: string; quote: string; bar: string }> = {
+const ACCENT_STYLES: Record<AccentColor, { icon: string; quote: string; bar: string }> = {
   blue: {
-    icon: "from-accent-blue/20 to-accent-blue/5 text-accent-blue",
-    glow: "from-accent-blue/25",
+    icon: "bg-accent-blue/15 text-accent-blue",
     quote: "text-accent-blue/55",
     bar: "bg-accent-blue/50",
   },
   lavender: {
-    icon: "from-accent-lavender/25 to-accent-lavender/5 text-accent-lavender-deep",
-    glow: "from-accent-lavender/25",
+    icon: "bg-accent-lavender/15 text-accent-lavender-deep",
     quote: "text-accent-lavender/70",
     bar: "bg-accent-lavender/55",
   },
   mint: {
-    icon: "from-accent-mint/30 to-accent-mint/10 text-accent-mint-deep",
-    glow: "from-accent-mint/25",
+    icon: "bg-accent-mint/15 text-accent-mint-deep",
     quote: "text-accent-mint-deep/55",
     bar: "bg-accent-mint/55",
   },
@@ -40,19 +37,11 @@ export function ProjectCard({ project }: { project: Project }) {
       variants={fadeUp}
       className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface p-6 shadow-[var(--shadow-soft)] transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_40px_90px_-30px_rgba(30,26,20,0.22)] sm:p-7"
     >
-      <div
-        aria-hidden
-        className={cn(
-          "pointer-events-none absolute -right-14 -top-16 h-52 w-52 rounded-full bg-gradient-to-br to-transparent opacity-0 blur-3xl transition-opacity duration-500 ease-out group-hover:opacity-100",
-          accent.glow
-        )}
-      />
-
       {/* Icon + where this stands */}
       <div className="relative flex items-start justify-between gap-4">
         <span
           className={cn(
-            "flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br",
+            "flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl",
             accent.icon
           )}
         >
@@ -95,7 +84,7 @@ export function ProjectCard({ project }: { project: Project }) {
             >
               <span
                 aria-hidden
-                className="h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-accent-blue to-accent-lavender"
+                className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-lavender"
               />
               {item}
             </li>

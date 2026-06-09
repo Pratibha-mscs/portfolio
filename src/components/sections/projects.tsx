@@ -14,7 +14,7 @@ export function Projects() {
         <SectionHeading
           eyebrow="Projects"
           title="Projects I've worked on"
-          description="A few projects across analytics, data engineering, machine learning, and AI — each one grew out of a real question I wanted to answer. Some repositories are being cleaned up before sharing, so I'm keeping those links honest for now."
+          description="A few projects across analytics, data engineering, machine learning, and AI — each one grew out of a real question I wanted to answer."
         />
 
         <motion.div

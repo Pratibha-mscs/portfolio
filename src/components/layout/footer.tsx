@@ -12,7 +12,7 @@ export function Footer() {
       <Container className="flex flex-col gap-8 py-12 sm:flex-row sm:items-center sm:justify-between">
         <div className="text-center sm:text-left">
           <a href="#top" className="inline-flex items-center gap-2.5 font-heading text-base font-semibold text-ink">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-accent-blue to-accent-lavender text-xs font-semibold text-white">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-lavender text-xs font-semibold text-white">
               {siteConfig.initials}
             </span>
             {siteConfig.name}

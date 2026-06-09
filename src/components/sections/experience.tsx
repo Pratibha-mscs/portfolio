@@ -17,7 +17,7 @@ export function Experience() {
         <div className="relative mt-14">
           <div
             aria-hidden
-            className="absolute top-2 bottom-2 left-[1.125rem] w-px bg-gradient-to-b from-accent-blue/50 via-accent-lavender/25 to-transparent sm:left-[1.375rem]"
+            className="absolute top-2 bottom-2 left-[1.125rem] w-px bg-accent-blue/30 sm:left-[1.375rem]"
           />
 
           <div className="space-y-8 sm:space-y-10">
@@ -26,7 +26,7 @@ export function Experience() {
                 <span className="absolute left-0 top-6 flex h-9 w-9 items-center justify-center rounded-full border border-line bg-surface shadow-[var(--shadow-soft)] sm:h-11 sm:w-11">
                   <span
                     aria-hidden
-                    className="h-2.5 w-2.5 rounded-full bg-gradient-to-br from-accent-blue to-accent-lavender"
+                    className="h-2.5 w-2.5 rounded-full bg-accent-lavender"
                   />
                 </span>
 
@@ -50,7 +50,7 @@ export function Experience() {
                         >
                           <span
                             aria-hidden
-                            className="h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-accent-blue to-accent-lavender"
+                            className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-lavender"
                           />
                           {h}
                         </li>

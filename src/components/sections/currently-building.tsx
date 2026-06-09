@@ -11,9 +11,9 @@ import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import { cn } from "@/lib/cn";
 
 const ICON_STYLES: Record<AccentColor, string> = {
-  blue: "from-accent-blue/20 to-accent-blue/5 text-accent-blue",
-  lavender: "from-accent-lavender/25 to-accent-lavender/5 text-accent-lavender-deep",
-  mint: "from-accent-mint/30 to-accent-mint/10 text-accent-mint-deep",
+  blue: "bg-accent-blue/15 text-accent-blue",
+  lavender: "bg-accent-lavender/15 text-accent-lavender-deep",
+  mint: "bg-accent-mint/15 text-accent-mint-deep",
 };
 
 interface BuildingItem {
@@ -76,15 +76,10 @@ export function CurrentlyBuilding() {
                 variants={fadeUp}
                 className="group relative flex h-full flex-col gap-5 overflow-hidden rounded-3xl border border-line bg-surface p-6 shadow-[var(--shadow-soft)] transition-transform duration-300 ease-out hover:-translate-y-1 sm:p-7"
               >
-                <div
-                  aria-hidden
-                  className="absolute -right-10 -top-12 h-36 w-36 rounded-full bg-gradient-to-br from-accent-blue/10 to-accent-lavender/10 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100"
-                />
-
                 <div className="relative flex items-center justify-between gap-3">
                   <span
                     className={cn(
-                      "flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br",
+                      "flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl",
                       ICON_STYLES[item.accent]
                     )}
                   >
